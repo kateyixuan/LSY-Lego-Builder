@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lego Builder</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="split-left" class="centered">
+        <div id="line"></div>
+    </div>
+    <div id="split-right">
+        <div class="title2-container">
+            <div class="title-box2">
+                <div class="title">Side View</div>
+            </div>
+        </div>
+        <div id="container-stuff">
+            <div id="camera-navigation-container">
+                <button class="north-button button2">
+                    <div class="arrow down"></div>
+                </button>
+                <div id="camera-navigation"></div>
+                <button class="south-button button2">
+                    <div class="arrow up"></div>
+                </button>
+            </div>
+            <button class="east-button button2">
+                <div class="arrow right"></div>
+            </button>
+            <button class="west-button button2">
+                <div class="arrow left"></div>
+            </button>
+            <div id="lego-board-3D">
+                <div id="lego-board-3D-transparent"></div>
+            </div>
+            <div id="split-lego-board"></div>
+        </div>
+    </div>
+    <div id="title-container">
+        <div class="title-box">
+            <div class="title">Lego Builder</div>
+        </div>
+    </div>
+    <div id="buttons-container">
+        <button class="button-locklayer button1">Lock Layer</button>
+        <a class="button-exportlayer button1">Build</a>
+        <button class="button-splitscreen button1">Side View</button>
+    </div>
+    <div id="layer-tracking-container"></div>
+    <div id="lego-board"></div>
+        <div id="board-container">
+            <div id="layout">
+                <div class="layout-writing">Place blocks here</div>
+            </div>
+            <!--<div id="grid"></div>-->
+            <div id="new-block1"></div>
+            <div id="new-block2"></div>
+            <div id="new-block3"></div>
+            <div id="new-block4"></div>
+            <div id="new-block5"></div>
+            <div id="new-block6"></div>
+            <div id="new-block7"></div>
+            <div id="new-block8"></div>
+            <div id="new-block9"></div>
+        </div>
+    <div id="instructions-container">
+        <div id="instructions-title">Instructions</div>
+        <div class="instructions-list">1. To move the bricks, drag the center of the brick</div>
+        <div class="instructions-list">2. To remove a brick, double click</div>
+        <div class="instructions-list">3. Press lock layer to set the position of each brick before stacking</div>
+        <div class="instructions-list">4. When all layers are locked, press build</div>
+        <div class="instructions-list">5. Press Side View and select a direction to view the structure you built</div>
+    </div>
+    </div>
+
+    <script src="js/circles.js"></script>
+    <script src="js/blocks.js"></script>
+    <script type='module' src="js/split_screen.js"></script>
+    <script src="js/split_screen_studs.js"></script>
+    <!-- <script src="js/set_in_place_layout_questionable.js"></script> -->
+    <!--<script src="js/grab-block-good-copy.js"></script>-->
+    <!--<script src="js/grab-blocks-test.js"></script>-->
+    <!--<script src="js/buttons.js"></script>-->
+    <!-- <script src="js/grab-blocks&save-layer.js"></script> -->
+    <!-- <script src="js/grab-blocks&save-layer copy 2.js"></script> -->
+    <!-- <script src="js/(best so far) grab-blocks&save-layer copy 3.js"></script> -->
+    <!-- <script src= "js/(best so far) everythign but with doubleclick remove.js"></script> -->
+    <script type="module" src="js/everything with export import.js"></script>
+    <!-- <script src="js/THISWORKS-grab-blocks&save-layer copy.js"></script> -->
+    <!--<script src="js/save-layer.js"></script>-->
+    <!--<script src="js/chatgptdidthis.js"></script>-->
+  
+</body>
+</html>
