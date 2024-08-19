@@ -1,0 +1,999 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #dcfdff;
+    flex-direction: column;
+}
+
+#title-container{
+    position: relative;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    text-align:center;
+    width: 30%;
+    max-width: 300px;
+    height: 6%;
+    min-height: 20px;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+    padding:1rem;
+}
+
+.title{
+    position: relative;
+    display:flex;
+    text-align:center;
+    font-size: 300%;
+    color:#f68012;
+    font-weight: 600;
+    font-family:'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', 'Helvetica', sans-serif;
+    z-index:2;
+    white-space: nowrap;
+}
+
+.title-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    border-radius:1rem;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffdd57;
+    text-align:center;
+    z-index: 1;
+}
+
+.title-box2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    border-radius:1rem;
+    top:0;
+    width: 70%;
+    height: 100%;
+    background-color: #ffdd57;
+    text-align:center;
+    z-index: 1;
+}
+
+
+/* BUTTON */ 
+#buttons-container{
+    position:relative;
+    display:flex;
+    margin-bottom: 0.2%;
+    gap: 3%;
+    justify-content: center;
+}
+
+.button-locklayer{
+    position:relative;
+    border: none;
+    border-radius:1rem;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    text-decoration: none;
+    font-family:'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', 'Helvetica', sans-serif;
+    font-size: 160%;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    margin-bottom: 1%;
+    font-weight:900;
+    white-space: nowrap;
+    border-bottom:0.35rem solid #fca131;
+}
+
+.button-exportlayer {
+    position: relative;
+    border: none;
+    border-radius:1rem;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    text-decoration: none;
+    font-family:'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', 'Helvetica', sans-serif;
+    font-size: 160%;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    margin-bottom: 1%;
+    font-weight:900;
+    border-bottom:0.35rem solid #fca131;
+}
+
+.button-splitscreen{
+    position: relative;
+    border: none;
+    border-radius:1rem;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    text-decoration: none;
+    font-family:'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', 'Helvetica', sans-serif;
+    font-size: 160%;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    margin-bottom: 1%;
+    font-weight:900;
+    border-bottom:0.35rem solid #fca131;
+    white-space: nowrap;
+
+}
+
+
+.button1 {
+    background-color: #ffdd57; 
+    color: #f68012; 
+}
+  
+.button1:hover {
+    background-color: #f68012;
+    color: #ffdd57;
+}
+
+/* GREEN BASEPLATE */
+
+#lego-board { /*cuts out a section for the board?*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;  /* Limit the maximum width for larger screens */
+}
+
+#controls {
+    margin-bottom: 10px;
+}
+
+#board-container { /*shows the green board*/
+    aspect-ratio: 1 / 1; 
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(24, minmax(0, 1fr));
+    grid-template-rows: repeat(24, minmax(0, 1fr));     
+    /* gap: 1.5%; */
+    background-color: #3c9e3c;
+    /* padding: 0.7%; */
+    border-radius: 7%;
+    /*border: 2px solid hsl(123, 66%, 18%);*/
+    /* Make the container responsive */ /* Maintain a square aspect ratio */
+    /*overflow: hidden;*/
+    z-index:1;
+}
+
+.circle {
+    width: 65%;  /* Make circles responsive */
+    height: 65%;
+    background-color: #128d12;
+    border-radius: 50%;
+    margin: auto;
+    display: inline-block;
+    aspect-ratio: 1 / 1;
+    z-index:1;
+    
+}
+
+/* BLOCKS */
+.draggable{
+    cursor:grab;
+}
+
+.block-split-grid {
+    position: relative;
+    width: 20%;
+    height:20%;
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    background-color: #128d12;
+}
+
+/* New block --> yellow */
+#new-block1 {
+    width: 7%;
+    aspect-ratio: 1 / 1;
+    background-color: #ffdd57;
+    /*border: 0.3rem solid #f3b01f;*/ 
+    position: absolute;
+    border-radius:0.2rem;
+    top: 4.25%;
+    left: 4.25%;
+    z-index: 2; /* Ensure it's on top of the circles */
+    grid-template-columns: repeat(2, 1fr);  /* Use repeat with flexible units */
+    grid-template-rows: repeat(2, 1fr); 
+    gap: 20%;
+    display:grid;
+    padding: 0.65%;
+    /*cursor: grab;*/
+    
+}
+
+.circleyellow {
+    width: 100%;  /* Make circles responsive */
+    height: 100%;
+    background-color: #f3b01f;
+    border-radius: 50%;
+    margin: auto;
+    display: inline-block;
+    aspect-ratio: 1 / 1;
+    z-index:2;
+}
+
+#new-block1-split {
+    width: 70%;
+    height: 150%;
+    /* aspect-ratio: 1 / 1; */
+    background-color: #ffdd57;
+    position: absolute;
+    border-radius:0.2rem;
+    z-index: 3; 
+    grid-template-columns: repeat(2, 1fr);
+    /* grid-template-rows: repeat(1, 1fr);  */
+    /* gap: 10%; */
+    /* grid-template-rows: auto 1fr; */
+    display:grid;
+    /* padding: 0.65%; */
+    grid-row-start: 12;
+    justify-items: center;
+    align-items: start;
+}
+
+.new-block1-split-studs {
+    width: 55%;
+    height: 25%;
+    aspect-ratio: 1/1;
+    /* border-radius: 20%; */
+    border-top-left-radius: 20%;
+    border-top-right-radius: 20%;
+    background-color: #f3b01f;
+    /* display: inline-block; */
+    display:flexbox;
+    z-index: 3;
+    /* grid-row-start: 1; */
+    /* margin-bottom: 100%; */
+    align-self: start;
+    /* grid-row: span 2; */
+
+} 
+
+/* New block --> pink */
+#new-block2 {
+    width: 7%;
+    aspect-ratio: 1 / 1;
+    background-color: #ff6f9d;
+    /*border: 0.3rem solid #f3b01f;*/ 
+    position: absolute;
+    border-radius:0.2rem;
+    top: 87.25%;
+    left: 4.25%;
+    z-index: 2; /* Ensure it's on top of the circles */
+    grid-template-columns: repeat(2, 1fr);  /* Use repeat with flexible units */
+    grid-template-rows: repeat(2, 1fr); 
+    gap: 20%;
+    display:grid;
+    padding: 0.65%;
+    /*cursor: grab;*/
+}
+
+.circlepink {
+    width: 100%;  /* Make circles responsive */
+    height: 100%;
+    background-color: #f15486;
+    border-radius: 50%;
+    margin: auto;
+    display: inline-block;
+    aspect-ratio: 1 / 1;
+    z-index:2;
+}
+
+#new-block2-split {
+    width: 70%;
+    height: 150%;
+    /* aspect-ratio: 1 / 1; */
+    background-color: #ff6f9d;
+    position: absolute;
+    border-radius:0.2rem;
+    z-index: 3; 
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr); 
+    gap: 20%;
+    display:grid;
+    /* padding: 0.65%; */
+}
+
+/* New block --> blue */
+#new-block3 {
+    width: 7%;
+    aspect-ratio: 1 / 1;
+    background-color: #57aeff;
+    /*border: 0.3rem solid #f3b01f;*/ 
+    position: absolute;
+    border-radius:0.2rem;
+    top: 4.25%;
+    left: 87.25%;
+    z-index: 2; /* Ensure it's on top of the circles */
+    grid-template-columns: repeat(2, 1fr);  /* Use repeat with flexible units */
+    grid-template-rows: repeat(2, 1fr); 
+    gap: 20%;
+    display:grid;
+    padding: 0.65%;
+    
+}
+
+.circleblue {
+    width: 100%;  /* Make circles responsive */
+    height: 100%;
+    background-color:#2285e1;
+    border-radius: 50%;
+    margin: auto;
+    display: inline-block;
+    aspect-ratio: 1 / 1;
+    z-index:2;
+}
+
+#new-block3-split {
+    width: 70%;
+    height: 150%;
+    /* aspect-ratio: 1 / 1; */
+    background-color: #57aeff;
+    position: absolute;
+    border-radius:0.2rem;
+    z-index: 3; 
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr); 
+    gap: 20%;
+    display:grid;
+    /* padding: 0.65%; */
+}
+
+/* New block --> green */
+#new-block4 {
+    width: 7%;
+    aspect-ratio: 1 / 1;
+    background-color: #98eb4f;
+    /*border: 0.3rem solid #f3b01f;*/ 
+    position: absolute;
+    border-radius:0.2rem;
+    top: 87.25%;
+    left: 87.25%;
+    z-index: 2; /* Ensure it's on top of the circles */
+    grid-template-columns: repeat(2, 1fr);  /* Use repeat with flexible units */
+    grid-template-rows: repeat(2, 1fr); 
+    gap: 20%;
+    display:grid;
+    padding: 0.65%;
+    cursor:grab;
+    
+}
+
+.circlegreen {
+    width: 100%;  /* Make circles responsive */
+    height: 100%;
+    background-color:#5bc21f;
+    border-radius: 50%;
+    margin: auto;
+    display: inline-block;
+    aspect-ratio: 1 / 1;
+    z-index:2;
+}
+
+#new-block4-split {
+    width: 70%;
+    height: 150%;
+    /* aspect-ratio: 1 / 1; */
+    background-color: #98eb4f;
+    position: absolute;
+    border-radius:0.2rem;
+    z-index: 3; 
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr); 
+    gap: 20%;
+    display:grid;
+    /* padding: 0.65%; */
+}
+
+
+/* New block --> orange */
+#new-block5 {
+    width: 7%;
+    aspect-ratio: 1 / 1;
+    background-color: #f68012;
+    /*border: 0.3rem solid #f3b01f;*/ 
+    position: absolute;
+    border-radius:0.2rem;
+    top: 46%;
+    left: 4.25%;
+    z-index: 2; /* Ensure it's on top of the circles */
+    grid-template-columns: repeat(2, 1fr);  /* Use repeat with flexible units */
+    grid-template-rows: repeat(2, 1fr); 
+    gap: 20%;
+    display:grid;
+    padding: 0.65%;
+    cursor:grab;
+    
+}
+
+.circleorange {
+    width: 100%;  /* Make circles responsive */
+    height: 100%;
+    background-color:#ffa654;
+    border-radius: 50%;
+    margin: auto;
+    display: inline-block;
+    aspect-ratio: 1 / 1;
+    z-index:2;
+}
+
+#new-block5-split {
+    width: 70%;
+    height: 150%;
+    /* aspect-ratio: 1 / 1; */
+    background-color: #f68012;
+    position: absolute;
+    border-radius:0.2rem;
+    z-index: 3; 
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr); 
+    gap: 20%;
+    display:grid;
+    /* padding: 0.65%; */
+}
+
+/* New block --> red */
+#new-block6 {
+    width: 7%;
+    aspect-ratio: 1 / 1;
+    background-color: #f13232;
+    /*border: 0.3rem solid #f3b01f;*/ 
+    position: absolute;
+    border-radius:0.2rem;
+    top: 46%;
+    left: 87.25%;
+    z-index: 2; /* Ensure it's on top of the circles */
+    grid-template-columns: repeat(2, 1fr);  /* Use repeat with flexible units */
+    grid-template-rows: repeat(2, 1fr); 
+    gap: 20%;
+    display:grid;
+    padding: 0.65%;
+    cursor:grab;
+}
+
+.circlered {
+    width: 100%;  /* Make circles responsive */
+    height: 100%;
+    background-color:#ef7373;
+    border-radius: 50%;
+    margin: auto;
+    display: inline-block;
+    aspect-ratio: 1 / 1;
+    z-index:2;
+}
+
+#new-block6-split {
+    width: 70%;
+    height: 150%;
+    /* aspect-ratio: 1 / 1; */
+    background-color: #f13232;
+    position: absolute;
+    border-radius:0.2rem;
+    z-index: 3; 
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr); 
+    gap: 20%;
+    display:grid;
+    /* padding: 0.65%; */
+}
+
+/* New block --> white */
+#new-block7 {
+    width: 7%;
+    aspect-ratio: 1 / 1;
+    background-color: #ffffff;
+    /*border: 0.3rem solid #f3b01f;*/ 
+    position: absolute;
+    border-radius:0.2rem;
+    top: 4.25%;
+    left: 45.8%;
+    z-index: 2; /* Ensure it's on top of the circles */
+    grid-template-columns: repeat(2, 1fr);  /* Use repeat with flexible units */
+    grid-template-rows: repeat(2, 1fr); 
+    gap: 20%;;
+    display:grid;
+    padding: 0.65%;
+    cursor:grab;
+    
+}
+
+.circlewhite {
+    width: 100%;  /* Make circles responsive */
+    height: 100%;
+    background-color:#f0f0e6;
+    border-radius: 50%;
+    margin: auto;
+    display: inline-block;
+    aspect-ratio: 1 / 1;
+    z-index:2;
+}
+
+#new-block7-split {
+    width: 70%;
+    height: 150%;
+    /* aspect-ratio: 1 / 1; */
+    background-color: #ffffff;
+    position: absolute;
+    border-radius:0.2rem;
+    z-index: 3; 
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr); 
+    gap: 20%;
+    display:grid;
+    /* padding: 0.65%; */
+}
+
+/* New block --> dark green */
+#new-block8 {
+    width: 7%;
+    aspect-ratio: 1 / 1;
+    background-color:#2cc411;
+    /*border: 0.3rem solid #f3b01f;*/ 
+    position: absolute;
+    border-radius:0.2rem;
+    top: 87.25%;
+    left: 45.8%;
+    z-index: 2; /* Ensure it's on top of the circles */
+    grid-template-columns: repeat(2, 1fr);  /* Use repeat with flexible units */
+    grid-template-rows: repeat(2, 1fr); 
+    gap: 20%;
+    display:grid;
+    padding: 0.65%;
+    cursor:grab;
+    
+}
+
+.circledarkgreen {
+    width: 100%;  /* Make circles responsive */
+    height: 100%;
+    background-color:#55da2d;
+    border-radius: 50%;
+    margin: auto;
+    display: inline-block;
+    aspect-ratio: 1 / 1;
+    z-index:2;
+}
+
+#new-block8-split {
+    width: 70%;
+    height: 150%;
+    /* aspect-ratio: 1 / 1; */
+    background-color:#2cc411;
+    position: absolute;
+    border-radius:0.2rem;
+    z-index: 3; 
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr); 
+    gap: 20%;
+    display:grid;
+    /* padding: 0.65%; */
+}
+
+/* New block --> light yellow */
+#new-block9 {
+    width: 7%;
+    aspect-ratio: 1 / 1;
+    background-color:#fffa98;
+    /*border: 0.3rem solid #f3b01f;*/ 
+    position: absolute;
+    border-radius:0.2rem;
+    top: 67%;
+    left: 4.25%;
+    z-index: 2; /* Ensure it's on top of the circles */
+    grid-template-columns: repeat(2, 1fr);  /* Use repeat with flexible units */
+    grid-template-rows: repeat(2, 1fr); 
+    gap: 20%;
+    display:grid;
+    padding: 0.65%;
+    cursor:grab;
+    
+}
+
+.circlelightyellow {
+    width: 100%;  /* Make circles responsive */
+    height: 100%;
+    background-color:#ece145;
+    border-radius: 50%;
+    margin: auto;
+    display: inline-block;
+    aspect-ratio: 1 / 1;
+    z-index:2;
+}
+
+#new-block9-split {
+    width: 70%;
+    height: 150%;
+    /* aspect-ratio: 1 / 1; */
+    background-color:#fffa98;
+    position: absolute;
+    border-radius:0.2rem;
+    z-index: 3; 
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr); 
+    gap: 20%;
+    display:grid;
+    /* padding: 0.65%; */
+}
+
+/* LEGO BUILD LAYOUT */
+#layout{
+    justify-self: center;
+    align-self: center;
+    display: flex;
+    aspect-ratio: 1/1;
+    text-align: center;
+    justify-content: center;
+    align-items: start;
+    width: 50%;
+    border: clamp(5px, 0.4em, 10px) dashed #dcfdff;
+    position: absolute;
+    border-radius: 0.2rem;
+    z-index: 2;
+}
+
+#grid{
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+    justify-content: center;
+    align-items: start;
+    display:grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    gap: 1.5%;
+    padding: 0.7%;
+    aspect-ratio: 1 / 1;  
+    background-color: #128d12;
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    z-index: 2;
+    max-width: 549.5px;
+}
+
+.layout-writing{
+    position: relative;
+    display:flex;
+    text-align:center;
+    justify-content: center;
+    align-items: center;
+    font-size: 230%;
+    color:#dcfdff;
+    font-weight: 600;
+    font-family:'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', 'Helvetica', sans-serif;
+    z-index:2;
+    cursor:none;
+}
+
+#new_block{
+    width: 7%;
+    aspect-ratio: 1 / 1;
+    border: clamp(1px, 0.4em, 4px) dashed #dcfdff;
+    position: fixed;
+    border-radius:0.2rem;
+    z-index: 2; 
+    gap: 20%;;
+    padding: 0.3%;
+}
+
+#layer-tracking-container{
+    position:fixed;
+    width: 250px;
+    height: 100%;
+    top: 20%;
+}
+
+/* Elements in split view*/
+#line {
+    position: fixed ;
+    height: 100%;
+    border-left: 6px solid #9ae4e8;
+    visibility: hidden;
+    z-index: 10;
+}
+
+#split-left {
+    height: 100%;
+    width: 50%;
+    position:fixed;
+    overflow-x: hidden;
+    left: 0;
+    text-align: -webkit-center;
+  }
+  
+#split-right {
+    height: 100%;
+    width: 50%;
+    position:fixed;
+    overflow-x: hidden;
+    right:0;
+    text-align: -webkit-center;
+    visibility: hidden;
+}
+  
+.centered {
+    width:90%;
+    margin: auto;
+}
+
+.title2-container {
+    position: relative;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    text-align:center;
+    width: 30%;
+    height: 6%;
+    min-height: 20px;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+    padding:1rem;
+    left: 5%;
+}
+
+#container-stuff {
+    position:relative;
+    width: 80%;
+    left: 5%;
+    display:flex;
+    justify-content: center;
+    height: 85%;
+    top: 1%;
+}
+
+#lego-board-3D {
+    position: absolute;
+    background-color: #3c9e3c;
+    width: 100%;
+    height: 3.65%;
+    top: 88%;
+    z-index: 2;
+    overflow: hidden;
+    z-index:1;
+}
+
+#lego-board-3D-transparent {
+    position:absolute;
+    height: 50%;
+    width: 100%;
+    z-index:2;
+    display: grid;
+    background-color: #dcfdff;
+    grid-template-columns: repeat(24, minmax(0, 1fr));
+    grid-template-rows: repeat(1, 1fr);
+    justify-items: center;
+    align-items: end;
+}
+
+.studs {
+    width: 50%;
+    height: 60%;
+    aspect-ratio: 1/1;
+    border-top-left-radius: 20%;
+    border-top-right-radius: 20%;
+    background-color: #128d12;
+    display: inline-block;
+    z-index: 2;
+
+} 
+
+#split-lego-board {
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    justify-items:flex-start;
+    z-index: 2;
+    height: 70%;
+    width:50%;
+    top:20%;
+}
+
+#camera-navigation-container{
+    position:absolute;
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    aspect-ratio: 1/1;
+    justify-content: center;
+    align-items: center;
+}
+
+#camera-navigation {
+    position: relative;
+    width: 50%;
+    height: 50%;
+    aspect-ratio: 1/1;
+    background-color: #3c9e3c;
+    display: flex;
+    border-radius: 10%;
+}
+
+.north-button{
+    position: relative;
+    display: flex;
+    border: none;
+    width: 50%;
+    height: 17%;
+    background-color:  #ffdd57;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    border-radius: 10%;
+    flex-direction:column;
+    margin-bottom: 5%;
+    border-bottom:0.35rem solid #fca131;
+    border-radius:1rem;
+}
+
+.south-button {
+    position: relative;
+    display: flex;
+    border: none;
+    width: 50%;
+    height: 17%;
+    background-color:  #ffdd57;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    border-radius: 10%;
+    flex-direction:column;
+    margin-top: 5%;
+    border-bottom:0.35rem solid #fca131;
+    border-radius:1rem;
+    top: 0.5%;
+
+}
+
+.east-button{
+    position: relative;
+    border: none;
+    display:flex;
+    width: 3.75%;
+    height: 9%;
+    background-color:  #ffdd57;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    border-radius: 10%;
+    margin-right: 5%;
+    border-bottom:0.35rem solid #fca131;
+    border-radius:1rem;
+    top:4.5%;
+    right: 1%;
+    align-content: center;
+    
+}
+
+.west-button{
+    position: relative;
+    width: 3.75%;
+    height: 9%;
+    border: none;
+    background-color:  #ffdd57;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    border-radius: 10%;
+    margin-right: 5%;
+    border-bottom:0.35rem solid #fca131;
+    border-radius:1rem;
+    top:4.5%;
+    left: 6%;
+    align-content: center;
+
+}
+
+.button2{
+    background-color: #ffdd57;
+    color: #f68012;
+}
+
+.button2:hover{
+    background-color:#fca131;
+    color: #ffdd57;
+}
+
+.arrow {
+    /* display:flex; */
+    border: solid #f68012;
+    border-width: 0 12px 12px 0;
+    display: flex;
+    padding: 15%;
+    scale:0.5;
+  }
+
+  .right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    padding: 50%;
+  }
+  
+  .left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+    padding: 50%;
+  }
+  
+  .up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+  }
+  
+  .down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+  }
+
+/* Instructions */
+
+#instructions-container {
+    position:fixed;
+    display:flex;
+    flex-direction: column;
+    width: 320px;
+    /* height: 60%; */
+    top: 20%; 
+    background-color:#ffdd57;
+    border-radius: 1%;
+    padding: 0.5%;
+}
+
+#instructions-title{
+    width: 100%;
+    height: 10%;
+    border-radius: 5%;
+    display:flex;
+    text-align:center;
+    justify-content: center;
+    align-items: center;
+    font-size: 230%;
+    color:#f68012;
+    font-weight: 600;
+    font-family:'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', 'Helvetica', sans-serif;
+    z-index:2;
+    cursor:none;
+}
+
+.instructions-list {
+    position: relative;
+    font-size: 120%;
+    color:#f68012;
+    font-weight: 600;
+    font-family:'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', 'Helvetica', sans-serif;
+    z-index:2;
+    padding: 5%;
+}
+
+/* Adjust grid size for larger screens */
+@media (min-width: 600px) {
+
+
+    .block {
+        width: 5%;
+        height: 5%;
+    }
+}
+
+@media (max-width: 1000px) {
+    .title {
+        font-size: 2em; /* Adjust font size for smaller screens */
+    }
+}
+
+
