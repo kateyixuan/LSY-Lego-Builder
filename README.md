@@ -19,6 +19,6 @@ If you would like to run this project,
 This repository only contains the website before final changes were implemented. Namely, this website does not include the camera-feedback feature where the data from the camera dictates which coloured blocks appear on the website. Because this feature is only compatible with the rest of the Lego Project code, it was not included here. If you would like to know more about it, feel free to ask! 
 
 # Images 
-![Image](./LegoBuilderv2?raw=true)
-![Image](./LegoBuilderv1?raw=true)
+![Image](./LegoBuilderv2.png?raw=true)
+![Image](./LegoBuilderv1,png?raw=true)
 
