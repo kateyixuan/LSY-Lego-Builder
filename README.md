@@ -20,5 +20,5 @@ This repository only contains the website before final changes were implemented.
 
 # Images 
 ![Image](./LegoBuilderv2.png?raw=true)
-![Image](./LegoBuilderv1,png?raw=true)
+![Image](./LegoBuilderv1.png?raw=true)
 
